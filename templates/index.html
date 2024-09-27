@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Shop - Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .hero {
+            height: 100vh;
+            background-image: url('static/clothes-hangers-colorful-clothes-women-shop-summer-sale-73852501.webp');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            
+        }
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.25rem;
+            }
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            .btn-lg {
+                padding: 0.75rem 1.5rem;
+                font-size: 1.25rem;
+            }
+        }
+        .card-img-top {
+            height: 150px;
+            object-fit: cover;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-danger {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        @media (max-width: 576px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body onload="restrictPastDate()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Dress Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#booking">Online Booking Form</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="text-center">
+            <h1>Welcome To  Dress Shop</h1>
+            <p class="lead text-black">More collections</p>
+            <b><a href="#services" class="btn btn-primary btn-lg">Learn More</a></b>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <h2>Our Services</h2>
+                <p class="lead">We offer a wide range of services to meet your needs.</p>
+                <p>Casual Summer Dress: This light and airy summer dress features a vibrant floral print that captures the essence of warm sunny days. The dress is made from a breathable cotton fabric, ensuring comfort and ease during outdoor gatherings.Elegant Evening Gown: This stunning evening gown is crafted from luxurious satin, offering a sleek and sophisticated silhouette.</p>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="static/40b96526388505.56354b599cc44.jpg" class="card-img-top" alt="About Us">
+                        <div class="card-body">
+                            <h5 class="card-title">About Us</h5>
+                            <p class="card-text">Good choice for LOOKING BEAUTY.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="static/desserts-_v8.jpeg" class="card-img-top" alt="Contact Us">
+                        <div class="card-body">
+                            <h5 class="card-title">CONTACT US</h5>
+                            <p class="card-text">8909056908</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="static/20240828_080734081_iOS.webp" class="card-img-top" alt="Email">
+                        <div class="card-body">
+                            <h5 class="card-title">GMAIL</h5>
+                            <p class="card-text">dress@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="container mt-5">
+        <h1>Online Booking Form</h1>
+        <form action="/submit" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+                <label for="mail" class="form-label">Email</label>
+                <input type="email" class="form-control" name="mail" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Online Booking Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-success mt-3" role="alert">
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <br>
+        <a href="{{ url_for('login') }}" class="btn btn-danger">Admin Login</a>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function restrictPastDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').setAttribute('min', today);
+        }
+    </script>
+</body>
+</html>
